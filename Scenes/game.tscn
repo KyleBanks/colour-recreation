@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://ctgpqgwcq7sgy"]
+
+[ext_resource type="Script" path="res://Scripts/player.gd" id="2_o7dcv"]
+[ext_resource type="Script" path="res://Scripts/spring_arm.gd" id="3_5od5n"]
+[ext_resource type="PackedScene" uid="uid://d3ewaw08xkmdn" path="res://Scenes/character.tscn" id="3_stwwv"]
+[ext_resource type="PackedScene" uid="uid://dvwau6xfx4425" path="res://Scenes/dungeon.tscn" id="4_e1vru"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_75u8y"]
+
+[node name="Game" type="Node3D"]
+
+[node name="Player" type="Node" parent="." node_paths=PackedStringArray("_character", "_camera_spring_arm")]
+script = ExtResource("2_o7dcv")
+_character = NodePath("../Character")
+_camera_spring_arm = NodePath("../Character/SpringArm3DNode")
+
+[node name="Character" parent="." instance=ExtResource("3_stwwv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+
+[node name="SpringArm3DNode" type="SpringArm3D" parent="Character"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.47921, 0)
+shape = SubResource("BoxShape3D_75u8y")
+spring_length = 5.0
+script = ExtResource("3_5od5n")
+_rotation_speed = 2.0
+
+[node name="Camera3D" type="Camera3D" parent="Character/SpringArm3DNode"]
+
+[node name="Dungeon" parent="." instance=ExtResource("4_e1vru")]

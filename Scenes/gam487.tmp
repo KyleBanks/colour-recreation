@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://ctgpqgwcq7sgy"]
+
+[ext_resource type="Texture2D" uid="uid://djijtfv2eoagh" path="res://Imported Assets/icon.svg" id="1_gapdu"]
+[ext_resource type="Script" path="res://Scripts/player.gd" id="2_o7dcv"]
+[ext_resource type="PackedScene" uid="uid://d3ewaw08xkmdn" path="res://Scenes/character.tscn" id="3_stwwv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v2pan"]
+albedo_texture = ExtResource("1_gapdu")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_hknkt"]
+material = SubResource("StandardMaterial3D_v2pan")
+size = Vector2(5, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_stbtk"]
+size = Vector3(5, 0, 5)
+
+[node name="Game" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.8235, -0.161625, -0.543806, 0.541102, -0.0642447, 0.838499, -0.170459, -0.984759, 0.0345501, 0, 2.44976, 0)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.992666, 0.053604, -0.108351, 0.0218085, 0.961014, 0.275637, 0.118902, 0.271253, -0.955136, -0.238249, 2.3918, -3.26984)
+
+[node name="Player" type="Node" parent="." node_paths=PackedStringArray("_character", "_camera")]
+script = ExtResource("2_o7dcv")
+_character = NodePath("../Character")
+_camera = NodePath("../Camera3D")
+
+[node name="Character" parent="." instance=ExtResource("3_stwwv")]
+
+[node name="Floor" type="StaticBody3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+mesh = SubResource("PlaneMesh_hknkt")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+shape = SubResource("BoxShape3D_stbtk")
