@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://ctgpqgwcq7sgy"]
 
-[ext_resource type="Script" path="res://Scripts/Demo Scene/player.gd" id="2_o7dcv"]
-[ext_resource type="Script" path="res://Scripts/Demo Scene/spring_arm.gd" id="3_5od5n"]
+[ext_resource type="Script" path="res://Scripts/Character/player.gd" id="2_o7dcv"]
+[ext_resource type="Script" path="res://Scripts/Character/spring_arm.gd" id="3_5od5n"]
 [ext_resource type="PackedScene" uid="uid://d3ewaw08xkmdn" path="res://Scenes/character.tscn" id="3_stwwv"]
 [ext_resource type="Script" path="res://Scripts/colour_source.gd" id="4_0w0p8"]
 [ext_resource type="PackedScene" uid="uid://dvwau6xfx4425" path="res://Scenes/dungeon.tscn" id="4_e1vru"]
