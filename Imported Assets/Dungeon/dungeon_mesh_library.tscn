@@ -236,3 +236,5 @@
 [node name="floor_dirt_large_rocky2" parent="." instance=ExtResource("77_lanpo")]
 
 [node name="floor_tile_extralarge_grates2" parent="." instance=ExtResource("78_oiu4b")]
+
+[editable path="floor_tile_extralarge_grates2"]
