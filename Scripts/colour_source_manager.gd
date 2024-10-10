@@ -4,9 +4,14 @@ extends Node3D
 
 func _process(_delta: float) -> void:
 	var num_colour_sources: int = _colour_sources.size()
-	RenderingServer.global_shader_parameter_set("num_colour_sources", num_colour_sources)
+	RenderingServer.global_shader_parameter_set(
+		"num_colour_sources", 
+		num_colour_sources
+	)
 
 	for i in range(0, num_colour_sources):
-		var colour_source: ColourSource = _colour_sources[i]
-		RenderingServer.global_shader_parameter_set("colour_sources_" + str(i), colour_source.packed())
+		RenderingServer.global_shader_parameter_set(
+			"colour_sources_" + str(i),
+			_colour_sources[i].packed()
+		)
 		
