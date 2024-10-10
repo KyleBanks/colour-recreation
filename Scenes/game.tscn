@@ -34,6 +34,14 @@ script = ExtResource("4_0w0p8")
 
 [node name="Dungeon" parent="." instance=ExtResource("4_e1vru")]
 
+[node name="Banner Colour Source 1" type="Node3D" parent="Dungeon"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.0052, 2.51914, -2.52816)
+script = ExtResource("4_0w0p8")
+
+[node name="Banner Colour Source 2" type="Node3D" parent="Dungeon"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.2356, 2.56495, -1.51611)
+script = ExtResource("4_0w0p8")
+
 [node name="Colour Source Manager" type="Node3D" parent="." node_paths=PackedStringArray("_colour_sources")]
 script = ExtResource("5_bdl7r")
-_colour_sources = [NodePath("../Character/Colour Source")]
+_colour_sources = [NodePath("../Character/Colour Source"), NodePath("../Dungeon/Banner Colour Source 1"), NodePath("../Dungeon/Banner Colour Source 2")]

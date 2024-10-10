@@ -41,7 +41,7 @@ float colour_sd(vec3 pos)
 
 	float nearest_sd = 99999999.0; 
 	for (int i = 0; i < num_colour_sources; i++)
-		nearest_sd = min(nearest_sd, sphere_sd(pos, colour_sources_0));
+		nearest_sd = min(nearest_sd, sphere_sd(pos, colour_sources[i]));
 	return nearest_sd;
 }
 
@@ -55,8 +55,7 @@ void vertex()
 void fragment()
 {
 	// Coloured shading
-	vec4 albedo_tex = texture(texture_albedo, UV);
-	vec3 coloured = albedo.rgb * albedo_tex.rgb;
+	vec3 coloured = texture(texture_albedo, UV).rgb;
 	
 	// Uncoloured shading
 	float desaturated = (coloured.r + coloured.g + coloured.b) / 3.0;
